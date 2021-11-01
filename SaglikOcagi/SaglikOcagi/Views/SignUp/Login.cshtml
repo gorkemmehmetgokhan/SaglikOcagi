@@ -1,0 +1,17 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Kullanici
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/Shared/_LoginLayout.cshtml";
+}
+
+<form class="form-signin" method="post" action="~/SignUp/Login">
+    @Html.AntiForgeryToken()
+    <h2 class="form-signin-heading">ADMİN GİRİŞİ</h2>
+    <div class="login-wrap">
+        <input type="text" name="KullaniciAdi" class="form-control" placeholder="Kullanıcı Adı" autofocus required>
+        <input type="password" name="Sifre" class="form-control" placeholder="Şifre" required>
+        <button class="btn btn-lg btn-login btn-block" type="submit">GİRİŞ YAP</button>
+    </div>
+</form>

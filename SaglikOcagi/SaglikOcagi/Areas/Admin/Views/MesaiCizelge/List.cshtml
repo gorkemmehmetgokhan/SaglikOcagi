@@ -1,0 +1,28 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_MesaiCizelge>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Çizelge Adı</th>
+        <th>Fotoğraf</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (tbl_MesaiCizelge item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(t => item.CizelgeAd)</td>
+            <td><img src="~/Images/@item.CizelgeFoto" class="pro-img-box" style="width:100px" height="100" /></td>            
+            <td>
+                <a href="~/Admin/MesaiCizelge/EditCizelge/@item.CizelgeID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/MesaiCizelge/Delete/@item.CizelgeID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

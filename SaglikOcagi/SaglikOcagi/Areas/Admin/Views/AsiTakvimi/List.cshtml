@@ -1,0 +1,29 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_AsiTakvimi>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Aşı Takvimi</th>
+        <th>Açıklama</th> 
+        <th>Düzenle</th>
+    </tr>
+    @foreach (tbl_AsiTakvimi item in Model)
+    {
+        <tr>
+            <td><img src="~/Images/@item.TakvimFoto" class="pro-img-box" style="width:100px" height="100" /></td>
+            <td>@Html.DisplayFor(t => item.TakvimAciklama)</td>
+            <td>
+                <a href="~/Admin/AsiTakvimi/EditTakvim/@item.AsiTakvimID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/AsiTakvimi/Delete/@item.AsiTakvimID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

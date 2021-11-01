@@ -1,0 +1,33 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_Hemsire>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Ad Soyad</th>
+        <th>Unvan</th>
+        <th>Hemşire No</th>
+        <th>Foto</th>
+        <th>Düzenle</th>
+    </tr>
+
+    @foreach (tbl_Hemsire item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(t => item.HemsireAdSoyad)</td>
+            <td>@Html.DisplayFor(t => item.Unvan)</td>
+            <td>@Html.DisplayFor(t => item.HemsireNo)</td>
+            <td><img src="~/Images/@item.HemsireFoto" class="pro-img-box" style="width:100px" height="100" /></td>
+            <td>
+                <a href="~/Admin/Hemsire/EditHemsire/@item.HemsireID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/Hemsire/Delete/@item.HemsireID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

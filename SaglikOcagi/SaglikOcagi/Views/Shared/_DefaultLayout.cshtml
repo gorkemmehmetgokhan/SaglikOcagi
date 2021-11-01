@@ -1,0 +1,313 @@
+﻿@using SaglikOcagi.Repository
+@using SaglikOcagi.Entity
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bayraklı 15 Nolu İsmet Akman - Aile Sağlığı Merkez</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    @*<link href="~/Content/TheEvent/img/favicon.png" rel="icon">
+        <link href="~/Content/TheEvent/img/apple-touch-icon.png" rel="apple-touch-icon">*@
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="@Url.Content("~/Content/TheEvent/lib/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
+
+    <!-- Libraries CSS Files -->
+    <link href="@Url.Content("~/Content/TheEvent/lib/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">*@
+
+    <link href="@Url.Content("~/Content/TheEvent/lib/animate/animate.min.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/lib/animate/animate.min.css" rel="stylesheet">*@
+
+    <link href="@Url.Content("~/Content/TheEvent/lib/venobox/venobox.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/lib/venobox/venobox.css" rel="stylesheet">*@
+
+    <link href="@Url.Content("~/Content/TheEvent/lib/owlcarousel/assets/owl.carousel.min.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
+
+    <!-- Main Stylesheet File -->
+
+    <link href="@Url.Content("~/Content/TheEvent/css/style.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/TheEvent/css/style.css" rel="stylesheet">*@
+
+    <script src="~/scripts/scrollbar.js"></script>
+
+    <!-- =======================================================
+      Theme Name: TheEvent
+      Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
+
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+
+    <style type="text/css">
+        .my-custom-scrollbar {
+            position: relative;
+            width: auto;
+            height: 570px;
+            overflow: auto;
+        }
+
+        .hoverColor:hover {
+            background-color: lightgreen;
+            background-image: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0px auto;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    @{
+        BaseRepository<tbl_Hekim> hekim = new BaseRepository<tbl_Hekim>();
+        BaseRepository<tbl_Hemsire> hemsire = new BaseRepository<tbl_Hemsire>();
+        BaseRepository<tbl_Adres> adres = new BaseRepository<tbl_Adres>();
+        BaseRepository<tbl_Linkler> link = new BaseRepository<tbl_Linkler>();
+
+    }
+
+    <a href="~/Home/Homepage"><img src="../../Images/header5.png" class="img-fluid" /></a>
+
+    <header class="d-none d-lg-block" id="menuHover" style="position:relative;background-color:#101522;height:40px">
+        <div class="container col-lg-12">
+            <nav id="nav-menu-container" style="float:left">
+                <ul class="nav-menu" id="deneme" style="padding-left:50px">
+                    <li class="@ViewBag.Anasayfa">@Html.ActionLink("Anasayfa", "Homepage", "Home")</li>
+                    <li class="@ViewBag.Hekim">@Html.ActionLink("Hekimler", "Hekimler", "Home")</li>
+                    <li class="@ViewBag.Personel">@Html.ActionLink("Personel", "Hemsire", "Home")</li>
+                    <li class="@ViewBag.Gallery">@Html.ActionLink("Fotoğraf Galerisi", "GalleryList", "Home")</li>
+                    <li class="@ViewBag.MesaiCizelge">@Html.ActionLink("Esnek Mesai Çizelgesi", "MesaiCizelge", "Home")</li>
+                    <li class="@ViewBag.AsiTakvimi">@Html.ActionLink("Aşı Takvimi", "AsiTakvimi", "Home")</li>
+                    <li><a href="https://lab.ism.gov.tr/alissonuckarsiyaka/hastasonuc_hasta.aspx" target="_blank">Laboratuvar Sonuçlari</a></li>
+                    <li>
+                        <div class="dropdown">
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Yararlı Linkler</a>
+                            <div class="dropdown-menu nav-menu" style="width:200px">
+                                @foreach (var item in link.SelectAll())
+                                {
+                                    <a href="@item.Link" class="dropdown-item hoverColor" target="_blank" style="color:black;padding:10px;white-space:normal">@item.Ad</a><hr />
+                                }
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </header><!-- #header -->
+
+    <main id="main" style="padding:0;margin:0">
+
+        <section id="buy-tickets" class="section-with-bg wow fadeInUp" style="padding-top:20px">
+            <!--<div class="container">-->
+
+            <div class="row" style="padding:10px">
+
+                <div class="col-lg-6 order-lg-2" style="background-color:white;height:auto">
+
+                    <div class="card">
+                        <div class="card-body">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="col-lg-3 order-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">HEKİMLERİMİZ</h5>
+                            <hr>
+
+                            <div class="my-custom-scrollbar my-custom-scrollbar-primary col-lg-12">
+
+                                <section id="speakers" class="wow fadeInUp" style="padding-top:0">
+                                    <div class="container">
+
+                                        <div class="row">
+
+                                            @foreach (var item in hekim.SelectAll())
+                                            {
+                                                tbl_Hemsire hemsireAd = hemsire.GetByHemsireID(Convert.ToInt32(item.HemsireID));
+
+                                                <a href="~/Home/HekimDetail/@item.HekimID">
+                                                    <div class="col-lg-12 col-md-6">
+
+                                                        <div class="speaker">
+                                                            @if (item.HekimFoto == 0.ToString() && item.CinsiyetID == 1)
+                                                            {
+                                                                <img src="~/Images/doktor.jpg" class="img-fluid" />
+                                                            }
+                                                            else if (item.HekimFoto == 0.ToString() && item.CinsiyetID == 2)
+                                                            {
+                                                                <img src="~/Images/womandoctor.png" class="img-fluid" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="~/Images/@item.HekimFoto" class="img-fluid" />
+                                                            }
+
+                                                            <div class="details">
+                                                                <div style="font-size:medium;white-space:normal"><a href="~/Home/HekimDetail/@item.HekimID">@item.Unvan @item.HekimAdSoyad</a></div>
+                                                                <div class="social" style="color:white;font-size:small;white-space:normal">@item.HekimNo NOLU AHB</div>
+                                                                <div class="social" style="color:white;white-space:normal;font-size:small">(Hemşire: @hemsireAd.HemsireAdSoyad)</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </section>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 order-lg-1">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <!--<h5 class="card-title text-muted text-uppercase text-center">Standard Access</h5>-->
+                            <a href="https://www.trthaber.com/">
+                                <img src="https://www.trthaber.com/static/images/siteneEkle/logo_a_v2.png" alt="TRT Haber Haberler" style="border: none 0;">
+                            </a>
+                            <hr>
+                            <!-- BAŞLA: TRT Haber Sitene Ekle -->
+                          <div class="container">
+                              <div class="row">
+                                  <div class="embed-responsive embed-responsive-16by9" style="font: normal 11px Arial; width: 283px; border: solid 1px #ccc; background: #fff; border-radius: 3px; box-shadow: 1px 1px 3px #ccc;height:500px">
+                                      <iframe class="embed-responsive-item" frameborder="0" width="283" height="432" src="https://www.trthaber.com/sitene-ekle/saglik-6/?haberSay=20&renk=a&baslik=1&resimler=1"></iframe>
+                                  </div>
+                              </div>
+                          </div>                                                                                 
+                            <!-- BİTİŞ: TRT Haber Sitene Ekle -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--</div>-->
+
+        </section>
+    </main>
+
+    <!--==========================
+      Footer
+    ============================-->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4 footer-links">
+                        <h4>KAMU SPOTU</h4>
+                        <a href="https://www.kanver.org/" target="_blank"><img class="col-lg-12" src="../../Images/kamuSpotu.gif" /></a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 footer-links">
+                        <h4>NEREDEYİZ</h4>
+                        <iframe class="col-lg-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3123.759945549083!2d27.127388814831463!3d38.4701029796231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd82a543cb34d%3A0x7bf2e8991a42ccc3!2zQmF5cmFrbMSxIDE1IE5vbHUgxLBzbWV0IEFrbWFuIEFpbGUgU2HEn2zEscSfxLEgTWVya2V6!5e0!3m2!1str!2str!4v1562314473769!5m2!1str!2str" width="350" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 footer-contact">
+                        <h4>İLETİŞİM BİLGİLERİ</h4>
+                        <p class="col-lg-12">
+                            @foreach (var item in adres.SelectAll())
+                            {
+                                if (item.AdresBaslik != null)
+                                {
+                                    <h4>@item.AdresBaslik</h4>
+                                }
+                                <strong>ADRES:</strong> @item.Adres<br>
+                                <strong>TELEFON:</strong> @item.Telefon<br>
+                                if (item.Email != null)
+                                {
+                                    <strong>WEB ADRESİ:</strong> @item.Email<br /><br />
+                                }
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong>TheEvent</strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=TheEvent
+                -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="~/Content/TheEvent/lib/jquery/jquery.min.js"></script>
+    <script src="~/Content/TheEvent/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="~/Content/TheEvent/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/TheEvent/lib/easing/easing.min.js"></script>
+    <script src="~/Content/TheEvent/lib/superfish/hoverIntent.js"></script>
+    <script src="~/Content/TheEvent/lib/superfish/superfish.min.js"></script>
+    <script src="~/Content/TheEvent/lib/wow/wow.min.js"></script>
+    <script src="~/Content/TheEvent/lib/venobox/venobox.min.js"></script>
+    <script src="~/Content/TheEvent/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="~/Content/TheEvent/contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="~/Content/TheEvent/js/main.js"></script>
+    @*<script src="~/Content/TheEvent/js/menuHover.js"></script>*@
+
+</body>
+
+</html>

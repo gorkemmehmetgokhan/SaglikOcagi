@@ -1,0 +1,46 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_AsiTakvimi
+
+@{
+    ViewBag.Title = "EditTakvim";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditTakvim", "AsiTakvimi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Aşı Takvimi</legend>
+        @Html.HiddenFor(model => model.AsiTakvimID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TakvimFoto)
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.TakvimFoto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.TakvimFoto)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TakvimAciklama)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TakvimAciklama)
+            @Html.ValidationMessageFor(model => model.TakvimAciklama)
+        </div>
+        <hr />
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>
+
+

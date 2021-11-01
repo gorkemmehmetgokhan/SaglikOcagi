@@ -1,0 +1,32 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_Adres>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Adres Başlığı</th>
+        <th>Telefon</th>
+        <th>Adres</th>
+        <th>Email</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (tbl_Adres item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(t => item.AdresBaslik)</td>
+            <td>@Html.DisplayFor(t => item.Telefon)</td>
+            <td>@Html.DisplayFor(t => item.Adres)</td>
+            <td>@Html.DisplayFor(t => item.Email)</td>
+            <td>
+                <a href="~/Admin/Adres/EditAddress/@item.AdresID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/Adres/Delete/@item.AdresID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

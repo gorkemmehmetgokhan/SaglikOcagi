@@ -1,0 +1,63 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Adres
+
+@{
+    ViewBag.Title = "EditAddress";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditAddress", "Adres", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Adres</legend>
+        @Html.HiddenFor(model => model.AdresID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AdresBaslik)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AdresBaslik)
+            @Html.ValidationMessageFor(model => model.AdresBaslik)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefon)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefon)
+            @Html.ValidationMessageFor(model => model.Telefon)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adres)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adres)
+            @Html.ValidationMessageFor(model => model.Adres)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <hr />
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>
+
+
+
+

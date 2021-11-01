@@ -1,0 +1,68 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Hekim
+
+@{
+    ViewBag.Title = "EditHekim";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditHekim", "Hekim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Hekim</legend>
+        @Html.HiddenFor(model => model.HekimID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HekimFoto)
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.HekimFoto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.HekimFoto)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HekimAdSoyad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HekimAdSoyad)
+            @Html.ValidationMessageFor(model => model.HekimAdSoyad)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unvan)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unvan)
+            @Html.ValidationMessageFor(model => model.Unvan)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HekimNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HekimNo)
+            @Html.ValidationMessageFor(model => model.HekimNo)
+        </div>
+        <hr />
+        <div class="editor-label">
+            <label>Cinsiyet</label>
+        </div>
+        <div class="editor-field">
+            <input name="gender" id="radioMale" value="Male" type="radio" checked /> Erkek
+            <input name="gender" id="radioFemale" value="Female" type="radio" /> Kadın
+        </div>
+  
+        <hr />
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>

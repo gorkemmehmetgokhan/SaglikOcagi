@@ -1,0 +1,59 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Hemsire
+
+@{
+    ViewBag.Title = "EditHemsire";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditHemsire", "Hemsire", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Hemşire</legend>
+        @Html.HiddenFor(model => model.HemsireID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HemsireFoto)
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.HemsireFoto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.HemsireFoto)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HemsireAdSoyad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HemsireAdSoyad)
+            @Html.ValidationMessageFor(model => model.HemsireAdSoyad)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Unvan)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Unvan)
+            @Html.ValidationMessageFor(model => model.Unvan)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HemsireNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HemsireNo)
+            @Html.ValidationMessageFor(model => model.HemsireNo)
+        </div>
+        <hr />
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>

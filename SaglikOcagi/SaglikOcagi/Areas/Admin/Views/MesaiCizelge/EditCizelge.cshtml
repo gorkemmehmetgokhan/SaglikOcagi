@@ -1,0 +1,45 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_MesaiCizelge
+
+@{
+    ViewBag.Title = "EditCizelge";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditCizelge", "MesaiCizelge", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Esnek Mesai Çizelgesi</legend>
+        @Html.HiddenFor(model => model.CizelgeID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CizelgeAd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CizelgeAd)
+            @Html.ValidationMessageFor(model => model.CizelgeAd)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CizelgeFoto)
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.CizelgeFoto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.CizelgeFoto)
+        </div>      
+        <hr />
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>
+

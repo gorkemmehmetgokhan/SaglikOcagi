@@ -1,0 +1,27 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_Linkler>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Link Adı</th>
+        <th>Link</th>  
+        <th>Düzenle</th>
+    </tr>
+    @foreach (tbl_Linkler item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(t => item.Ad)</td>
+            <td>@Html.DisplayFor(t => item.Link)</td>           
+            <td>
+                <a href="~/Admin/Link/EditLink/@item.LinkID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/Link/Delete/@item.LinkID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+

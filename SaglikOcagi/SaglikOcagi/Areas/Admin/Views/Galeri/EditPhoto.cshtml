@@ -1,0 +1,44 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Galeri
+
+@{
+    ViewBag.Title = "EditPhoto";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditPhoto", "Galeri", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Galeri</legend>
+        @Html.HiddenFor(model => model.GaleriID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Foto)
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.Foto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.Foto)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Aciklama)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Aciklama)
+            @Html.ValidationMessageFor(model => model.Aciklama)
+        </div>
+        <hr />
+        
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>

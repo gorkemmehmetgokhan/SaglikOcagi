@@ -1,0 +1,46 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Anasayfa
+
+@{
+    ViewBag.Title = "EditHomepage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditHomepage", "Anasayfa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Anasayfa</legend>
+        @Html.HiddenFor(model => model.AnasayfaID)
+
+        <div class="editor-label">
+            Anasayfa Foto
+        </div>
+        <div class="editor-field">
+            <img src="~/Images/@Model.AnasayfaFoto" width="100" height="100" /><br /><br />
+            <input type="file" name="PhotoPath" id="PhotoPath" />
+            @Html.ValidationMessageFor(model => model.AnasayfaFoto)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Aciklama)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Aciklama, new { style = "width:800px ;height:100px" })
+            @Html.ValidationMessageFor(model => model.Aciklama)
+        </div>
+        <hr />
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>
+
+

@@ -1,0 +1,27 @@
+﻿@using SaglikOcagi.Entity
+@model IEnumerable<tbl_Kullanici>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Kullanıcı Adı</th>
+        <th>Şifre</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (tbl_Kullanici item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(t => item.KullaniciAdi)</td>
+            <td>@Html.DisplayFor(t => item.Sifre)</td>
+            <td>
+                <a href="~/Admin/User/EditUser/@item.KullaniciID" class="btn btn-success">Düzenle</a>
+                <a href="~/Admin/User/Delete/@item.KullaniciID" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+

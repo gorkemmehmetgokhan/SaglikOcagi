@@ -1,0 +1,59 @@
+﻿@using SaglikOcagi.Entity;
+@using SaglikOcagi.Repository;
+@model  IEnumerable<tbl_Hekim>
+
+@{
+    ViewBag.Title = "Hekimler";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+@{
+    BaseRepository<tbl_Hekim> hekim = new BaseRepository<tbl_Hekim>();
+    BaseRepository<tbl_Hemsire> hemsire = new BaseRepository<tbl_Hemsire>();
+
+}
+
+<h5 class="card-title text-muted text-uppercase text-center">HEKİMLERİMİZ</h5>
+<hr />
+
+
+<section id="speakers" class="wow fadeInUp" style="padding-top:0">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                tbl_Hemsire hemsireAd = hemsire.GetByHemsireID(Convert.ToInt32(item.HemsireID));
+
+                <a href="~/Home/HekimDetail/@item.HekimID">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="speaker">
+
+                            @if (item.HekimFoto == 0.ToString() && item.CinsiyetID == 1)
+                            {
+                                <img src="~/Images/doktor.jpg" class="img-fluid" />
+                            }
+                            else if (item.HekimFoto == 0.ToString() && item.CinsiyetID == 2)
+                            {
+                                <img src="~/Images/womandoctor.png" class="img-fluid" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/@item.HekimFoto" class="img-fluid" />
+                            }
+
+                            <div class="details">
+                                <h3><a href="~/Home/HekimDetail/@item.HekimID">@item.Unvan @item.HekimAdSoyad</a></h3>
+                                <div class="social" style="color:white">@item.HekimNo NOLU AHB</div>
+                                <div class="social" style="color:white;white-space:normal;font-size:small">(Hemşire: @hemsireAd.HemsireAdSoyad)</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+
+        </div>
+    </div>
+</section>
+
+
+

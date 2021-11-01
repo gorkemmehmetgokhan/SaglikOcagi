@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_SaglikMerkeziModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdresBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Anasayfa">
+          <Key>
+            <PropertyRef Name="AnasayfaID" />
+          </Key>
+          <Property Name="AnasayfaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnasayfaFoto" Type="nvarchar(max)" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_AsiTakvimi">
+          <Key>
+            <PropertyRef Name="AsiTakvimID" />
+          </Key>
+          <Property Name="AsiTakvimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TakvimFoto" Type="nvarchar(max)" />
+          <Property Name="TakvimAciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Cinsiyet">
+          <Key>
+            <PropertyRef Name="CinsiyetID" />
+          </Key>
+          <Property Name="CinsiyetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Galeri">
+          <Key>
+            <PropertyRef Name="GaleriID" />
+          </Key>
+          <Property Name="GaleriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_Hekim">
+          <Key>
+            <PropertyRef Name="HekimID" />
+          </Key>
+          <Property Name="HekimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CinsiyetID" Type="int" />
+          <Property Name="HemsireID" Type="int" />
+          <Property Name="HekimAdSoyad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HekimNo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="HekimFoto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Hemsire">
+          <Key>
+            <PropertyRef Name="HemsireID" />
+          </Key>
+          <Property Name="HemsireID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HemsireAdSoyad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="HemsireNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="HemsireFoto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_Linkler">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_MesaiCizelge">
+          <Key>
+            <PropertyRef Name="CizelgeID" />
+          </Key>
+          <Property Name="CizelgeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CizelgeAd" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CizelgeFoto" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_SaglikMerkeziModelStoreContainer">
+          <EntitySet Name="tbl_Adres" EntityType="Self.tbl_Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Anasayfa" EntityType="Self.tbl_Anasayfa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AsiTakvimi" EntityType="Self.tbl_AsiTakvimi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Cinsiyet" EntityType="Self.tbl_Cinsiyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Galeri" EntityType="Self.tbl_Galeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Hekim" EntityType="Self.tbl_Hekim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Hemsire" EntityType="Self.tbl_Hemsire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Linkler" EntityType="Self.tbl_Linkler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_MesaiCizelge" EntityType="Self.tbl_MesaiCizelge" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_SaglikMerkeziModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdresBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Anasayfa">
+          <Key>
+            <PropertyRef Name="AnasayfaID" />
+          </Key>
+          <Property Name="AnasayfaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnasayfaFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_AsiTakvimi">
+          <Key>
+            <PropertyRef Name="AsiTakvimID" />
+          </Key>
+          <Property Name="AsiTakvimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TakvimFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TakvimAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Cinsiyet">
+          <Key>
+            <PropertyRef Name="CinsiyetID" />
+          </Key>
+          <Property Name="CinsiyetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Galeri">
+          <Key>
+            <PropertyRef Name="GaleriID" />
+          </Key>
+          <Property Name="GaleriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Hekim">
+          <Key>
+            <PropertyRef Name="HekimID" />
+          </Key>
+          <Property Name="HekimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CinsiyetID" Type="Int32" />
+          <Property Name="HemsireID" Type="Int32" />
+          <Property Name="HekimAdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HekimNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HekimFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Hemsire">
+          <Key>
+            <PropertyRef Name="HemsireID" />
+          </Key>
+          <Property Name="HemsireID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HemsireAdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HemsireNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HemsireFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Linkler">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_MesaiCizelge">
+          <Key>
+            <PropertyRef Name="CizelgeID" />
+          </Key>
+          <Property Name="CizelgeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CizelgeAd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CizelgeFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_SaglikMerkeziEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Adres" EntityType="Self.tbl_Adres" />
+          <EntitySet Name="tbl_Anasayfa" EntityType="Self.tbl_Anasayfa" />
+          <EntitySet Name="tbl_AsiTakvimi" EntityType="Self.tbl_AsiTakvimi" />
+          <EntitySet Name="tbl_Cinsiyet" EntityType="Self.tbl_Cinsiyet" />
+          <EntitySet Name="tbl_Galeri" EntityType="Self.tbl_Galeri" />
+          <EntitySet Name="tbl_Hekim" EntityType="Self.tbl_Hekim" />
+          <EntitySet Name="tbl_Hemsire" EntityType="Self.tbl_Hemsire" />
+          <EntitySet Name="tbl_Kullanici" EntityType="Self.tbl_Kullanici" />
+          <EntitySet Name="tbl_Linkler" EntityType="Self.tbl_Linkler" />
+          <EntitySet Name="tbl_MesaiCizelge" EntityType="Self.tbl_MesaiCizelge" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_SaglikMerkeziModelStoreContainer" CdmEntityContainer="DB_SaglikMerkeziEntities">
+          <EntitySetMapping Name="tbl_Adres">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Adres">
+              <MappingFragment StoreEntitySet="tbl_Adres">
+                <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+                <ScalarProperty Name="AdresBaslik" ColumnName="AdresBaslik" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Anasayfa">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Anasayfa">
+              <MappingFragment StoreEntitySet="tbl_Anasayfa">
+                <ScalarProperty Name="AnasayfaID" ColumnName="AnasayfaID" />
+                <ScalarProperty Name="AnasayfaFoto" ColumnName="AnasayfaFoto" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AsiTakvimi">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_AsiTakvimi">
+              <MappingFragment StoreEntitySet="tbl_AsiTakvimi">
+                <ScalarProperty Name="AsiTakvimID" ColumnName="AsiTakvimID" />
+                <ScalarProperty Name="TakvimFoto" ColumnName="TakvimFoto" />
+                <ScalarProperty Name="TakvimAciklama" ColumnName="TakvimAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Cinsiyet">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Cinsiyet">
+              <MappingFragment StoreEntitySet="tbl_Cinsiyet">
+                <ScalarProperty Name="CinsiyetID" ColumnName="CinsiyetID" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Galeri">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Galeri">
+              <MappingFragment StoreEntitySet="tbl_Galeri">
+                <ScalarProperty Name="GaleriID" ColumnName="GaleriID" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Hekim">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Hekim">
+              <MappingFragment StoreEntitySet="tbl_Hekim">
+                <ScalarProperty Name="HekimID" ColumnName="HekimID" />
+                <ScalarProperty Name="CinsiyetID" ColumnName="CinsiyetID" />
+                <ScalarProperty Name="HemsireID" ColumnName="HemsireID" />
+                <ScalarProperty Name="HekimAdSoyad" ColumnName="HekimAdSoyad" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="HekimNo" ColumnName="HekimNo" />
+                <ScalarProperty Name="HekimFoto" ColumnName="HekimFoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Hemsire">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Hemsire">
+              <MappingFragment StoreEntitySet="tbl_Hemsire">
+                <ScalarProperty Name="HemsireID" ColumnName="HemsireID" />
+                <ScalarProperty Name="HemsireAdSoyad" ColumnName="HemsireAdSoyad" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="HemsireNo" ColumnName="HemsireNo" />
+                <ScalarProperty Name="HemsireFoto" ColumnName="HemsireFoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Kullanici">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Kullanici">
+              <MappingFragment StoreEntitySet="tbl_Kullanici">
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Linkler">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_Linkler">
+              <MappingFragment StoreEntitySet="tbl_Linkler">
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_MesaiCizelge">
+            <EntityTypeMapping TypeName="DB_SaglikMerkeziModel.tbl_MesaiCizelge">
+              <MappingFragment StoreEntitySet="tbl_MesaiCizelge">
+                <ScalarProperty Name="CizelgeID" ColumnName="CizelgeID" />
+                <ScalarProperty Name="CizelgeAd" ColumnName="CizelgeAd" />
+                <ScalarProperty Name="CizelgeFoto" ColumnName="CizelgeFoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

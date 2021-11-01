@@ -1,0 +1,44 @@
+﻿@using SaglikOcagi.Entity;
+@using SaglikOcagi.Repository;
+@model  IEnumerable<tbl_Hemsire>
+
+@{
+    ViewBag.Title = "Hemsire";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h5 class="card-title text-muted text-uppercase text-center">HEMŞİRELERİMİZ</h5>
+<hr />
+
+<section id="speakers" class="wow fadeInUp" style="padding-top:0">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <a href="~/Home/HemsireDetail/@item.HemsireID">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="speaker">
+
+                            @if (item.HemsireFoto == 0.ToString())
+                            {
+                                <img src="~/Images/nurse.png" class="img-fluid" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/@item.HemsireFoto" class="img-fluid" />
+                            }
+
+                            <div class="details">
+                                <h3><a href="~/Home/HemsireDetail/@item.HemsireID">@item.HemsireAdSoyad</a></h3>
+                                <div class="social" style="color:white">@item.HemsireNo NOLU AHB</div>
+                                <div class="social" style="color:white">@item.Unvan</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,45 @@
+﻿@using SaglikOcagi.Entity
+@model tbl_Kullanici
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditUser", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Admin</legend>
+        @Html.HiddenFor(model => model.KullaniciID)
+       
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KullaniciAdi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KullaniciAdi)
+            @Html.ValidationMessageFor(model => model.KullaniciAdi)
+        </div>
+        <hr />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sifre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sifre)
+            @Html.ValidationMessageFor(model => model.Sifre)
+        </div>
+        <hr />
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Kaydet" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "List")
+</div>
+
+
